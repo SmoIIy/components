@@ -1,0 +1,199 @@
+body {
+    display: grid;
+    place-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+fieldset,
+legend {
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: min(65ch, 100% - 4rem);
+    border: 1px solid #f42069;
+    padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 1rem;
+    & > * {
+        margin-block-end: 1rem;
+        padding: 0.2rem;
+    }
+}
+
+.required {
+    color: #f42069;
+}
+
+fieldset {
+    border: 1px solid black;
+    padding: 0.5rem;
+    label {
+        display: flex;
+        flex-direction: column;
+
+    }
+    legend {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    max-width: 100%;
+    font: inherit;
+    color: inherit;
+    padding: 0.2rem;
+    margin-block-start: 0.2rem;
+    font-size: 1rem;
+}
+
+
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"],
+input[type="button"] {
+    width: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+    appearance: none;
+}
+
+
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; /* hides the native UI */
+  
+    padding-right: 1.5em; /* prevents input text from running into background image */
+  
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8" fill="none" stroke="black"><path d="M7.5 3L4 6 .5 3"/></svg>');
+    background-size: 0.7em;
+    background-repeat: no-repeat;
+    background-position: right 0.5em center;
+  }
+
+input[type="search"] {
+    padding-right: 1.5em;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="black" stroke-width="2"><circle cx="7" cy="7" r="6" /><path d="M11 11 L15 15" /></svg>');
+    background-size: 0.7em;
+    background-repeat: no-repeat;
+    background-position: right 0.5em center;
+}
+
+
+/* Checkbox and radio */
+@supports (appearance: none) or (-moz-appearance: none) or (-webkit-appearance: none)  {
+    input[type="checkbox"],
+    input[type="radio"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        position: relative;
+        display: inline-block;
+        top: -0.1em;
+        width: 1em;
+        height: 1em;
+        border: 1px solid;
+        vertical-align: middle;
+        transition: all 200ms ease;
+        background-size: 0 0;
+        background-repeat: no-repeat;
+    }
+  
+    input[type="checkbox"]:checked {
+        background-size: 100% 100%;
+        background-color: #f42069;
+        background-image: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>');
+    }
+    input[type="radio"]:checked {
+        background-size: 100% 100%;
+        background-color: #f42069;
+        box-shadow: inset 0 0 0 .25em white;
+      
+    }
+  
+    input[type='radio'] {
+      border-radius: 50%;
+    }
+}
+
+/* Switch */
+
+@supports (appearance: none) or (-moz-appearance: none) or (-webkit-appearance: none)  {
+    input[type="checkbox"].switch {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        position: relative;
+        top: -0.1em;
+        display: inline-flex;
+        align-items: center;
+        width: 2.6em;
+        border: 1px solid currentColor;
+        height: 1.5em;
+        border-radius: 1000rem;
+        padding: .2em;
+        margin-right: 2em;
+        vertical-align: middle;
+    }
+    input[type="checkbox"].switch:checked {
+        background-color: transparent;
+    }
+    input[type="checkbox"].switch:before {
+        content: '';
+        width: 1em;
+        height: 1em;
+        border-radius: 1000rem;
+        background: #f42069;
+        transition: all 400ms cubic-bezier(.92,-0.58,.48,1.66);
+    }
+    input[type="checkbox"].switch:checked:before {
+        background-color: limegreen;
+        transform: translateX(1em);
+    }
+    input[type="checkbox"].switch:after {
+        content: 'Off';
+        position: absolute;
+        right: -2em;
+    }
+    input[type="checkbox"].switch:checked:after {
+        content: 'On';
+    }
+  }
+
+  /* Focused */
+
+input:focus + .next-sibling {
+    outline-width: 1px;
+    outline-style: auto;
+    outline-color: Highlight;
+    outline-color: -webkit-focus-ring-color;
+}
+
+/* Valid and invalid */
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-bottom-color: red;
+}
+
+input:valid,
+select:valid,
+textarea:valid {
+    border-bottom-color: green
+}
